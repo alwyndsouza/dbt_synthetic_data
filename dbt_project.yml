@@ -1,0 +1,19 @@
+name: 'dbt_synthetic_data'
+version: '1.0.0'
+config-version: 2
+
+# Project profile (references profiles.yml)
+profile: 'dbt_synthetic_data'
+
+# Directories
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# Output directory for compiled SQL
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"

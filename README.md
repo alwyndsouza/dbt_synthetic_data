@@ -1,113 +1,59 @@
 # dbt Synthetic Data
 
-Synthetic star-schema data generator for a **dbt + DuckDB** analytics project.
-Generates 7 Parquet files (~500 MB compressed) simulating a digital product
-analytics platform with users, products, locations, devices, transactions,
-sessions, and events.
-
-## Prerequisites
-
-- Python 3.12+
-- [uv](https://docs.astral.sh/uv/) — fast Python package and project manager
-
-### Install uv
-
-```bash
-# macOS / Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Windows (PowerShell)
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-
-# Or via pip
-pip install uv
-```
+Synthetic star-schema data generator for **dbt + DuckDB**. Generates 7 Parquet files (~500 MB) with 50K–5M rows each.
 
 ## Quick Start
 
 ```bash
-# 1. Clone the repository
+# Clone and setup
 git clone https://github.com/alwyndsouza/dbt_synthetic_data.git
 cd dbt_synthetic_data
 
-# 2. Create the virtual environment and install all dependencies
-uv sync
-
-# 3. Generate the synthetic dataset
-uv run generate_data.py
+# Full setup: uv environment, dbt packages, and synthetic data
+make setup
 ```
 
-This will create the following files under `data/raw/`:
-
+This generates:
 ```
-data/
-└── raw/
-    ├── dim_users.parquet          (~50,000 rows)
-    ├── dim_products.parquet       (~200 rows)
-    ├── dim_locations.parquet      (~500 rows)
-    ├── dim_devices.parquet        (~100 rows)
-    ├── fact_transactions.parquet  (~1,000,000 rows)
-    ├── fact_sessions.parquet      (~500,000 rows)
-    └── fact_events.parquet        (~5,000,000 rows)
+data/raw/
+├── dim_users.parquet           (50K rows)
+├── dim_products.parquet        (200 rows)
+├── dim_locations.parquet       (500 rows)
+├── dim_devices.parquet         (100 rows)
+├── fact_transactions.parquet   (1M rows)
+├── fact_sessions.parquet       (500K rows)
+└── fact_events.parquet         (5M rows)
 ```
 
-Generation takes **under 2 minutes** on a standard laptop.
-
-## Project Structure
-
-```
-dbt_synthetic_data/
-├── generate_data.py          # Data generation script
-├── pyproject.toml            # Project metadata and dependencies (uv)
-├── uv.lock                   # Locked dependency versions
-├── .python-version           # Pinned Python version for uv
-├── data/
-│   └── raw/                  # Generated Parquet files (git-ignored)
-└── models/
-    └── staging/
-        └── sources.yml       # dbt source definitions
-```
-
-## Dependencies
-
-All dependencies are managed by **uv** and declared in `pyproject.toml`:
-
-| Package    | Purpose                               |
-|------------|---------------------------------------|
-| `pandas`   | DataFrame construction and I/O        |
-| `numpy`    | Vectorised random data generation     |
-| `faker`    | Realistic names, emails, timezones    |
-| `pyarrow`  | Snappy-compressed Parquet writing     |
-
-### Managing dependencies
+## Make Commands
 
 ```bash
-# Add a new dependency
-uv add <package>
-
-# Remove a dependency
-uv remove <package>
-
-# Upgrade all dependencies to latest compatible versions
-uv lock --upgrade
-uv sync
+make env-setup    # Setup uv environment and dbt packages
+make data         # Generate synthetic Parquet files
+make install      # Create uv environment and install dependencies
+make dbt-deps     # Install dbt packages
+make setup        # Full setup (env + packages + data)
+make clean        # Remove data and dbt artifacts
+make help         # Show all commands
 ```
 
-## dbt Configuration
+## Project Files
 
-The `models/staging/sources.yml` file is ready to use with **dbt-duckdb**.
-It declares all 7 tables as external sources that read directly from the
-Parquet files via DuckDB's `read_parquet` function.
+- `generate_data.py` - Data generation script
+- `dbt_project.yml` - dbt project config
+- `profiles.yml` - DuckDB connection settings
+- `packages.yml` - dbt package dependencies
+- `models/staging/sources.yml` - External Parquet table definitions
 
-### dbt setup
+## Using with dbt
 
-```bash
-# Install dbt-duckdb alongside project dependencies
-uv add dbt-core dbt-duckdb
+Query Parquet files directly in your models:
 
-# Verify dbt can read all sources
-uv run dbt source freshness
+```sql
+select * from read_parquet('data/raw/dim_users.parquet')
 ```
+
+Sources are documented in `models/staging/sources.yml` for dbt's source freshness checks.
 
 ## Schema Overview
 

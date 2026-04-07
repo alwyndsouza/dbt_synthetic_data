@@ -5,6 +5,8 @@ description = "Synthetic star-schema data generator for dbt + DuckDB"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "dbt-core>=1.11.7",
+    "dbt-duckdb>=1.10.1",
     "faker>=40.13.0",
     "numpy>=2.4.4",
     "pandas>=3.0.2",

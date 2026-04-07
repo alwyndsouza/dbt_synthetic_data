@@ -1,0 +1,13 @@
+dbt_synthetic_data:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'dbt_synthetic_data.duckdb'
+      
+      # DuckDB-specific configurations
+      threads: 4
+      
+      # Extension configuration for reading Parquet files
+      extensions:
+        - parquet

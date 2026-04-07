@@ -4,6 +4,13 @@
 # Generated Parquet data files (regenerate with: uv run generate_data.py)
 data/raw/*.parquet
 
+# dbt artifacts
+target/
+dbt_packages/
+logs/
+*.duckdb
+*.duckdb.wal
+
 # Python byte-compiled / optimised / DLL files
 __pycache__/
 *.py[cod]
