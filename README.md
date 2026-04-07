@@ -1,0 +1,1 @@
+# dbt_synthetic_data
