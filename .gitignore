@@ -1,0 +1,19 @@
+# Virtual environment
+.venv/
+
+# Generated Parquet data files (regenerate with: uv run generate_data.py)
+data/raw/*.parquet
+
+# Python byte-compiled / optimised / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# OS artefacts
+.DS_Store
+Thumbs.db

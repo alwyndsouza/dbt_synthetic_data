@@ -1,0 +1,15 @@
+[project]
+name = "dbt-synthetic-data"
+version = "0.1.0"
+description = "Synthetic star-schema data generator for dbt + DuckDB"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "faker>=40.13.0",
+    "numpy>=2.4.4",
+    "pandas>=3.0.2",
+    "pyarrow>=23.0.1",
+]
+
+[project.scripts]
+generate-data = "generate_data:main"
