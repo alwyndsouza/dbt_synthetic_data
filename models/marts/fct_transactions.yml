@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: fct_transactions
+    description: "Transaction fact with full dimension enrichment"
+    columns:
+      - name: transaction_id
+        description: "Primary key - UUID for the transaction"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "Foreign key to dim_users"
+        tests:
+          - not_null
+      - name: product_id
+        description: "Foreign key to dim_products"
+        tests:
+          - not_null
+      - name: location_id
+        description: "Foreign key to dim_locations"
+        tests:
+          - not_null
+      - name: transaction_date
+        description: "Date of the transaction"
+      - name: transaction_timestamp
+        description: "Full timestamp of the transaction"
+      - name: amount
+        description: "Transaction amount"
+        tests:
+          - not_null
+      - name: currency
+        description: "Transaction currency code"
+      - name: payment_status
+        description: "Payment status: success, failed, or pending"
+        tests:
+          - not_null
+      - name: discount_applied
+        description: "Discount percentage applied (0-1)"
+      - name: tax_amount
+        description: "Tax amount charged"
+      - name: discount_amount
+        description: "Calculated discount amount"
+      - name: net_amount
+        description: "Amount after discount"
+      - name: successful_amount
+        description: "Amount for successful payments only"
+      - name: is_failed
+        description: "Flag indicating failed payment"
+      - name: is_pending
+        description: "Flag indicating pending payment"
+      - name: user_tier
+        description: "User tier from dim_users"
+      - name: user_country
+        description: "User's country"
+      - name: product_name
+        description: "Product name from dim_products"
+      - name: product_category
+        description: "Product category"
+      - name: base_price
+        description: "Base price of the product"
+      - name: country_code
+        description: "Location country code"
+      - name: region
+        description: "Geographic region"
+      - name: location_timezone
+        description: "Location timezone"

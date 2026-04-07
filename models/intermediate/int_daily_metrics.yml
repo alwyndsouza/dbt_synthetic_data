@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: int_daily_metrics
+    description: "Intermediate model: daily aggregated metrics across all facts"
+    columns:
+      - name: date
+        description: "Date for the metrics"
+        tests:
+          - unique
+          - not_null
+      - name: transaction_count
+        description: "Number of transactions on this date"
+      - name: daily_revenue
+        description: "Total revenue from transactions"
+      - name: daily_net_revenue
+        description: "Net revenue from successful transactions"
+      - name: avg_transaction_value
+        description: "Average transaction value"
+      - name: transaction_users
+        description: "Unique customers with transactions"
+      - name: session_count
+        description: "Number of sessions on this date"
+      - name: avg_session_duration
+        description: "Average session duration in minutes"
+      - name: total_page_views
+        description: "Total page views across sessions"
+      - name: total_session_events
+        description: "Total events across sessions"
+      - name: unique_session_users
+        description: "Unique users with sessions"
+      - name: event_count
+        description: "Total events on this date"
+      - name: error_events
+        description: "Number of error events"
+      - name: page_view_events
+        description: "Number of page view events"
+      - name: unique_event_users
+        description: "Unique users with events"

@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: fct_daily_metrics
+    description: "Daily aggregated metrics for time-series analysis"
+    columns:
+      - name: date
+        description: "Calendar date - primary key"
+        tests:
+          - unique
+          - not_null
+      - name: transaction_count
+        description: "Total transactions for the day"
+        tests:
+          - not_null
+      - name: daily_revenue
+        description: "Total revenue for the day"
+        tests:
+          - not_null
+      - name: daily_net_revenue
+        description: "Net revenue after discounts"
+      - name: avg_transaction_value
+        description: "Average transaction value"
+      - name: unique_transaction_users
+        description: "Unique customers who transacted"
+      - name: session_count
+        description: "Total sessions for the day"
+        tests:
+          - not_null
+      - name: avg_session_duration
+        description: "Average session duration in minutes"
+      - name: total_page_views
+        description: "Total page views"
+      - name: total_session_events
+        description: "Total events across all sessions"
+      - name: unique_session_users
+        description: "Unique users who had sessions"
+      - name: event_count
+        description: "Total events for the day"
+      - name: error_events
+        description: "Number of error events"
+      - name: page_view_events
+        description: "Number of page view events"
+      - name: unique_event_users
+        description: "Unique users who triggered events"
+      - name: error_rate
+        description: "Error rate as percentage"
+      - name: revenue_per_user
+        description: "Revenue per transacting user"

@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: int_session_event_summary
+    description: "Intermediate model: summarizes events per session"
+    columns:
+      - name: session_id
+        description: "Primary key - session identifier"
+        tests:
+          - unique
+          - not_null
+      - name: total_events
+        description: "Total number of events in the session"
+      - name: unique_event_types
+        description: "Number of distinct event types"
+      - name: unique_pages
+        description: "Number of distinct pages visited"
+      - name: total_duration
+        description: "Total duration of events in seconds"
+      - name: avg_event_duration
+        description: "Average event duration in seconds"
+      - name: error_count
+        description: "Number of error events"
+      - name: page_view_count
+        description: "Number of page view events"
+      - name: button_click_count
+        description: "Number of button click events"
+      - name: form_submit_count
+        description: "Number of form submit events"
+      - name: session_duration_minutes
+        description: "Session duration in minutes"
+      - name: page_views
+        description: "Number of page views in session"
+      - name: events_per_minute
+        description: "Events per minute rate"

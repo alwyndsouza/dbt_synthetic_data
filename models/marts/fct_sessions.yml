@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: fct_sessions
+    description: "Session fact with device enrichment for analytics"
+    columns:
+      - name: session_id
+        description: "Primary key - UUID for the session"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "Foreign key to dim_users"
+        tests:
+          - not_null
+      - name: device_id
+        description: "Foreign key to dim_devices"
+        tests:
+          - not_null
+      - name: start_time
+        description: "Session start timestamp"
+      - name: end_time
+        description: "Session end timestamp"
+      - name: session_duration_minutes
+        description: "Session duration in minutes"
+        tests:
+          - not_null
+      - name: page_views
+        description: "Number of pages viewed"
+      - name: events_count
+        description: "Total events during session"
+      - name: device_type
+        description: "Device type: mobile, desktop, or tablet"
+        tests:
+          - not_null
+      - name: os
+        description: "Operating system"
+      - name: browser
+        description: "Web browser"
+      - name: is_mobile
+        description: "Flag indicating mobile device"
+      - name: is_mobile_os
+        description: "Flag indicating mobile OS (iOS/Android)"
+      - name: session_hour
+        description: "Hour of session start (0-23)"
+      - name: session_day_of_week
+        description: "Day of week of session start (0=Sunday)"
+      - name: session_length_category
+        description: "Session length category: short, medium, long"

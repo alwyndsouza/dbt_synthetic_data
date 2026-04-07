@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_dim_locations
+    description: "Staged location dimension with derived columns"
+    columns:
+      - name: location_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: country_code
+        tests:
+          - not_null
+      - name: region
+        tests:
+          - not_null

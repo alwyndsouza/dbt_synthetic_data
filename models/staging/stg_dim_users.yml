@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_dim_users
+    description: "Staged user dimension with derived columns"
+    columns:
+      - name: user_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        tests:
+          - not_null
+      - name: user_tier
+        tests:
+          - not_null
+      - name: is_active
+        tests:
+          - not_null

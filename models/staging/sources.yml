@@ -10,34 +10,149 @@ sources:
         description: "User dimension — 50,000 synthetic users"
         meta:
           external_location: "read_parquet('data/raw/dim_users.parquet')"
+        columns:
+          - name: user_id
+            description: "Primary key - UUID for the user"
+          - name: email
+            description: "User email address"
+          - name: first_name
+            description: "User's first name"
+          - name: last_name
+            description: "User's last name"
+          - name: country
+            description: "User's country"
+          - name: city
+            description: "User's city"
+          - name: timezone
+            description: "User's timezone"
+          - name: signup_date
+            description: "Date the user signed up"
+          - name: user_tier
+            description: "Subscription tier: free, premium, or enterprise"
+          - name: is_active
+            description: "Whether the user is currently active"
 
       - name: dim_products
         description: "Product dimension — 200 synthetic products"
         meta:
           external_location: "read_parquet('data/raw/dim_products.parquet')"
+        columns:
+          - name: product_id
+            description: "Primary key - UUID for the product"
+          - name: product_name
+            description: "Product display name"
+          - name: product_category
+            description: "Product category: subscription, add-on, or credit_pack"
+          - name: base_price
+            description: "Base price in USD"
+          - name: created_at
+            description: "Product creation timestamp"
 
       - name: dim_locations
         description: "Location dimension — 500 synthetic locations"
         meta:
           external_location: "read_parquet('data/raw/dim_locations.parquet')"
+        columns:
+          - name: location_id
+            description: "Primary key - UUID for the location"
+          - name: country_code
+            description: "ISO 3166-1 alpha-2 country code"
+          - name: country_name
+            description: "Full country name"
+          - name: region
+            description: "Geographic region"
+          - name: latitude
+            description: "Location latitude"
+          - name: longitude
+            description: "Location longitude"
+          - name: timezone
+            description: "Location timezone"
 
       - name: dim_devices
         description: "Device dimension — 100 synthetic devices"
         meta:
           external_location: "read_parquet('data/raw/dim_devices.parquet')"
+        columns:
+          - name: device_id
+            description: "Primary key - UUID for the device"
+          - name: device_type
+            description: "Device type: mobile, desktop, or tablet"
+          - name: os
+            description: "Operating system"
+          - name: browser
+            description: "Web browser"
 
       # Fact Tables
       - name: fact_transactions
         description: "Transaction fact — 1,000,000 rows"
         meta:
           external_location: "read_parquet('data/raw/fact_transactions.parquet')"
+        columns:
+          - name: transaction_id
+            description: "Primary key - UUID for the transaction"
+          - name: user_id
+            description: "Foreign key to dim_users"
+          - name: product_id
+            description: "Foreign key to dim_products"
+          - name: location_id
+            description: "Foreign key to dim_locations"
+          - name: transaction_date
+            description: "Date of the transaction"
+          - name: transaction_timestamp
+            description: "Full timestamp of the transaction"
+          - name: amount
+            description: "Transaction amount in original currency"
+          - name: currency
+            description: "Transaction currency code"
+          - name: payment_status
+            description: "Payment status: success, failed, or pending"
+          - name: discount_applied
+            description: "Discount percentage applied (0-1)"
+          - name: tax_amount
+            description: "Tax amount charged"
 
       - name: fact_sessions
         description: "Session fact — 500,000 rows"
         meta:
           external_location: "read_parquet('data/raw/fact_sessions.parquet')"
+        columns:
+          - name: session_id
+            description: "Primary key - UUID for the session"
+          - name: user_id
+            description: "Foreign key to dim_users"
+          - name: device_id
+            description: "Foreign key to dim_devices"
+          - name: start_time
+            description: "Session start timestamp"
+          - name: end_time
+            description: "Session end timestamp"
+          - name: session_duration_minutes
+            description: "Session duration in minutes"
+          - name: page_views
+            description: "Number of pages viewed"
+          - name: events_count
+            description: "Total events during session"
 
       - name: fact_events
         description: "Event fact — 5,000,000 rows"
         meta:
           external_location: "read_parquet('data/raw/fact_events.parquet')"
+        columns:
+          - name: event_id
+            description: "Primary key - UUID for the event"
+          - name: user_id
+            description: "Foreign key to dim_users"
+          - name: device_id
+            description: "Foreign key to dim_devices"
+          - name: location_id
+            description: "Foreign key to dim_locations"
+          - name: event_timestamp
+            description: "Event timestamp"
+          - name: event_type
+            description: "Type: page_view, button_click, form_submit, error, logout"
+          - name: page_url
+            description: "URL of the page where event occurred"
+          - name: session_id
+            description: "Foreign key to fact_sessions"
+          - name: duration_seconds
+            description: "Duration of the event in seconds"

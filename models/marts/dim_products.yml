@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Final product dimension with revenue analytics"
+    columns:
+      - name: product_id
+        description: "Primary key - UUID for the product"
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "Product display name"
+        tests:
+          - not_null
+      - name: product_category
+        description: "Product category: subscription, add-on, or credit_pack"
+        tests:
+          - not_null
+      - name: base_price
+        description: "Base price in USD"
+        tests:
+          - not_null
+      - name: pricing_model
+        description: "Pricing model: recurring or one_time"
+      - name: price_tier
+        description: "Price tier: basic, standard, or premium"
+      - name: created_at
+        description: "Product creation timestamp"
+      - name: total_orders
+        description: "Total number of orders"
+      - name: total_revenue
+        description: "Total revenue from successful orders"
+      - name: avg_order_value
+        description: "Average order value"
+      - name: unique_buyers
+        description: "Number of unique customers who purchased"
+      - name: product_status
+        description: "Product status: new, established, growing, top_performer"

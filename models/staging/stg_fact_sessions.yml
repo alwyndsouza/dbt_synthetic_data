@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_fact_sessions
+    description: "Staged session fact with derived columns"
+    columns:
+      - name: session_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dim_users')
+              field: user_id
+      - name: device_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dim_devices')
+              field: device_id
+      - name: session_duration_minutes
+        tests:
+          - not_null

@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_dim_products
+    description: "Staged product dimension with derived columns"
+    columns:
+      - name: product_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        tests:
+          - not_null
+      - name: product_category
+        tests:
+          - not_null

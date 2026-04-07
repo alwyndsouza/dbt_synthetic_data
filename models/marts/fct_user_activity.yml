@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: fct_user_activity
+    description: "User activity fact for user-level analytics"
+    columns:
+      - name: user_id
+        description: "Primary key - references dim_users"
+        tests:
+          - unique
+          - not_null
+      - name: signup_date
+        description: "User signup date"
+      - name: user_tier
+        description: "User subscription tier"
+        tests:
+          - not_null
+      - name: is_active
+        description: "Whether user is currently active"
+      - name: country
+        description: "User's country"
+      - name: timezone
+        description: "User's timezone"
+      - name: transaction_count
+        description: "Total transactions"
+      - name: lifetime_revenue
+        description: "Total revenue from successful transactions"
+        tests:
+          - not_null
+      - name: active_days
+        description: "Number of days with activity"
+      - name: session_count
+        description: "Total sessions"
+      - name: avg_session_duration
+        description: "Average session duration in minutes"
+      - name: total_page_views
+        description: "Total page views"
+      - name: total_events
+        description: "Total events"
+      - name: first_session
+        description: "First session timestamp"
+      - name: last_session
+        description: "Last session timestamp"
+      - name: event_count
+        description: "Total events"
+      - name: unique_event_types
+        description: "Count of distinct event types"
+      - name: unique_pages_visited
+        description: "Count of distinct pages visited"
+      - name: error_count
+        description: "Number of error events"
+      - name: engagement_score
+        description: "Composite engagement score"

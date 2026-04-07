@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_fact_events
+    description: "Staged event fact with derived columns"
+    columns:
+      - name: event_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dim_users')
+              field: user_id
+      - name: session_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_fact_sessions')
+              field: session_id
+      - name: event_type
+        tests:
+          - not_null

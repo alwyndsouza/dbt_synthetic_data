@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: int_user_transaction_aggregates
+    description: "Intermediate model: aggregates transaction metrics per user"
+    columns:
+      - name: user_id
+        description: "Primary key - user identifier"
+        tests:
+          - unique
+          - not_null
+      - name: total_transactions
+        description: "Total number of transactions"
+      - name: successful_transactions
+        description: "Number of successful transactions"
+      - name: failed_transactions
+        description: "Number of failed transactions"
+      - name: success_rate
+        description: "Percentage of successful transactions"
+      - name: total_revenue
+        description: "Total revenue from all transactions"
+      - name: net_revenue
+        description: "Net revenue from successful transactions"
+      - name: avg_transaction_value
+        description: "Average transaction value"
+      - name: first_transaction_date
+        description: "Date of first transaction"
+      - name: last_transaction_date
+        description: "Date of last transaction"
+      - name: active_days
+        description: "Number of days with transactions"
+      - name: customer_lifetime_days
+        description: "Customer lifetime in days"

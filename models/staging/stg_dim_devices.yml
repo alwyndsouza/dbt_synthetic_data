@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_dim_devices
+    description: "Staged device dimension with derived columns"
+    columns:
+      - name: device_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: device_type
+        tests:
+          - not_null

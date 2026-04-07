@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: "Final user dimension with enriched attributes from transactions and sessions"
+    columns:
+      - name: user_id
+        description: "Primary key - UUID for the user"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "User email address"
+        tests:
+          - not_null
+      - name: first_name
+        description: "User's first name"
+      - name: last_name
+        description: "User's last name"
+      - name: country
+        description: "User's country"
+      - name: city
+        description: "User's city"
+      - name: timezone
+        description: "User's timezone"
+      - name: signup_date
+        description: "Date the user signed up"
+      - name: user_tier
+        description: "Subscription tier: free, premium, or enterprise"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['free', 'premium', 'enterprise']
+      - name: is_active
+        description: "Whether the user is currently active"
+        tests:
+          - not_null
+      - name: is_enterprise
+        description: "Whether user is enterprise tier"
+      - name: total_transactions
+        description: "Total number of transactions"
+      - name: lifetime_value
+        description: "Total revenue from successful transactions"
+        tests:
+          - not_null
+      - name: total_sessions
+        description: "Total number of sessions"
+      - name: avg_session_duration
+        description: "Average session duration in minutes"
+      - name: total_page_views
+        description: "Total page views across all sessions"
+      - name: customer_value_segment
+        description: "Value segment based on lifetime_value"
+        tests:
+          - not_null
+      - name: engagement_status
+        description: "Engagement status: active, at_risk, churned, inactive"
