@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: mart_session_analytics
+    description: |
+      Session Analytics Mart - One row per session with device and user context.
+      Purpose: Session-level metrics analysis with engagement scoring.
+      Includes session quality scores, engagement levels, and calculated engagement rates.
+    columns:
+      - name: session_id
+        description: Primary key - unique session identifier
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Foreign key to user
+        tests:
+          - not_null
+      - name: device_id
+        description: Foreign key to device
+      - name: start_time
+        description: Session start timestamp
+      - name: end_time
+        description: Session end timestamp
+      - name: session_duration_minutes
+        description: Duration of session in minutes
+      - name: page_views
+        description: Number of pages viewed
+      - name: events_count
+        description: Number of events triggered
+      - name: email
+        description: User email
+      - name: first_name
+        description: User first name
+      - name: last_name
+        description: User last name
+      - name: user_tier
+        description: User tier
+      - name: user_is_active
+        description: Whether user is active
+      - name: signup_date
+        description: User signup date
+      - name: days_since_signup
+        description: Days between signup and session
+      - name: device_type
+        description: Type of device
+      - name: os
+        description: Operating system
+      - name: browser
+        description: Web browser
+      - name: session_quality_score
+        description: Quality classification (high_quality, medium_quality, low_quality, minimal)
+      - name: engagement_level
+        description: Engagement depth classification (high_engagement, medium_engagement, low_engagement, minimal_engagement)
+      - name: events_per_minute
+        description: Event rate (events_count / session_duration_minutes)
+      - name: pages_per_minute
+        description: Page view rate (page_views / session_duration_minutes)

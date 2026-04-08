@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: int_enriched_transactions
+    description: Intermediate model joining transactions with user, product, and location dimensions. Provides complete transaction context.
+    columns:
+      - name: transaction_id
+        description: Primary key - unique transaction identifier
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Foreign key to user
+        tests:
+          - not_null
+      - name: product_id
+        description: Foreign key to product
+      - name: location_id
+        description: Foreign key to location
+      - name: transaction_date
+        description: Date of transaction
+      - name: transaction_timestamp
+        description: Full timestamp of transaction
+      - name: amount
+        description: Transaction amount
+      - name: currency
+        description: Currency code
+      - name: payment_status
+        description: Payment status
+      - name: discount_applied
+        description: Discount amount
+      - name: tax_amount
+        description: Tax amount
+      - name: email
+        description: User email from joined dimension
+      - name: first_name
+        description: User first name
+      - name: last_name
+        description: User last name
+      - name: user_country
+        description: User's country
+      - name: user_city
+        description: User's city
+      - name: user_tier
+        description: User tier
+      - name: user_is_active
+        description: Whether user is active
+      - name: signup_date
+        description: User signup date
+      - name: product_name
+        description: Product name
+      - name: product_category
+        description: Product category
+      - name: base_price
+        description: Product base price
+      - name: country_code
+        description: Location country code
+      - name: country_name
+        description: Location country name
+      - name: region
+        description: Geographic region
+      - name: location_timezone
+        description: Location timezone
+      - name: revenue_after_discount
+        description: Amount after discount applied (amount - discount_applied)
+      - name: net_revenue
+        description: Net revenue after discount and tax (amount - discount_applied - tax_amount)

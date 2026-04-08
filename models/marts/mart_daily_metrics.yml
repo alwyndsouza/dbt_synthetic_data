@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: mart_daily_metrics
+    description: |
+      Daily Metrics Mart - One row per day with comprehensive KPIs.
+      Purpose: Daily KPIs including revenue, sessions, events, and new users.
+      Includes moving averages and year-over-year comparisons.
+    columns:
+      - name: calendar_date
+        description: Primary key - calendar date
+        tests:
+          - unique
+          - not_null
+      - name: total_revenue
+        description: Total revenue for the day (SUM of all successful transaction amounts)
+      - name: revenue_after_discount
+        description: Revenue after discounts applied
+      - name: tax_amount
+        description: Total tax collected
+      - name: net_revenue
+        description: Net revenue after discounts and taxes
+      - name: total_discount_given
+        description: Total discounts given
+      - name: transaction_count
+        description: Number of transactions
+      - name: unique_transacting_users
+        description: Number of unique users who made transactions
+      - name: avg_order_value
+        description: Average order value
+      - name: total_sessions
+        description: Number of sessions
+      - name: total_session_duration
+        description: Total session duration in minutes
+      - name: avg_session_duration
+        description: Average session duration in minutes
+      - name: total_page_views
+        description: Total page views
+      - name: session_events
+        description: Total events in sessions
+      - name: unique_active_users
+        description: Unique users with session activity
+      - name: total_events
+        description: Total event count
+      - name: unique_event_users
+        description: Unique users who triggered events
+      - name: avg_time_on_page
+        description: Average time on page in seconds
+      - name: new_users
+        description: Number of new user signups
+      - name: revenue_7day_moving_avg
+        description: 7-day rolling average of net revenue
+      - name: revenue_30day_moving_avg
+        description: 30-day rolling average of net revenue
+      - name: prior_year_revenue
+        description: Net revenue from same date previous year
+      - name: yoy_growth_percentage
+        description: Year-over-year growth percentage

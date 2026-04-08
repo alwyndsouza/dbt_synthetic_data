@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: mart_user_analytics
+    description: |
+      User Analytics Mart - One row per user with consolidated attributes and engagement metrics.
+      Purpose: Consolidate user attributes with engagement and revenue metrics for user-level analysis.
+      Calculates lifetime value, order counts, session engagement, and user segmentation.
+    columns:
+      - name: user_id
+        description: Primary key - unique user identifier
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: User email address
+      - name: first_name
+        description: User first name
+      - name: last_name
+        description: User last name
+      - name: country
+        description: User's country
+      - name: city
+        description: User's city
+      - name: timezone
+        description: User's timezone
+      - name: signup_date
+        description: Date when user registered
+      - name: user_tier
+        description: User tier classification (free, premium)
+      - name: is_active
+        description: Whether user account is active
+      - name: days_since_signup
+        description: Number of days since user signup
+      - name: lifetime_value
+        description: Total revenue from user (SUM of all successful transaction amounts)
+      - name: order_count
+        description: Number of transactions placed by user
+      - name: avg_order_value
+        description: Average order value (lifetime_value / order_count)
+      - name: total_discount_given
+        description: Total discounts received by user
+      - name: tax_paid
+        description: Total taxes paid by user
+      - name: net_revenue
+        description: Net revenue from user (after discounts and taxes)
+      - name: total_sessions
+        description: Total number of sessions by user
+      - name: total_session_duration_minutes
+        description: Total session time in minutes
+      - name: avg_session_duration
+        description: Average session duration in minutes
+      - name: total_page_views
+        description: Total page views across all sessions
+      - name: total_events
+        description: Total events triggered across all sessions
+      - name: user_segment
+        description: User segment classification based on engagement and transactions (high_value, medium_value, low_value, new)

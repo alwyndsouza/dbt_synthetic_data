@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_fact_transactions
+    description: Staging model for transaction fact table. Cleans and standardizes transaction data from the source.
+    columns:
+      - name: transaction_id
+        description: Primary key - unique identifier for each transaction
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Foreign key to user dimension
+        tests:
+          - not_null
+      - name: product_id
+        description: Foreign key to product dimension
+        tests:
+          - not_null
+      - name: location_id
+        description: Foreign key to location dimension
+        tests:
+          - not_null
+      - name: transaction_date
+        description: Date of the transaction
+      - name: transaction_timestamp
+        description: Timestamp of the transaction
+      - name: amount
+        description: Transaction amount before discounts and taxes
+      - name: currency
+        description: Currency code (e.g., USD)
+      - name: payment_status
+        description: Status of payment (success, pending, failed)
+      - name: discount_applied
+        description: Discount amount applied to transaction
+      - name: tax_amount
+        description: Tax amount charged

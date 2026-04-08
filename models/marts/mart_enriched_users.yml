@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: mart_enriched_users
+    description: |
+      Enriched User Model - Semantic Layer
+      Purpose: Comprehensive user profile with LTV, engagement metrics, and segment classification.
+      One row per user with lifetime value calculations, behavioral scoring, and RFM-style segmentation.
+    columns:
+      - name: user_id
+        description: Primary key - unique user identifier
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: User email address
+      - name: first_name
+        description: User first name
+      - name: last_name
+        description: User last name
+      - name: country
+        description: User's country
+      - name: city
+        description: User's city
+      - name: timezone
+        description: User's timezone
+      - name: signup_date
+        description: User registration date
+      - name: user_tier
+        description: User tier (free, premium)
+      - name: is_active
+        description: Whether user account is active
+      - name: days_since_signup
+        description: Days since signup
+      - name: order_count
+        description: Total number of orders
+      - name: lifetime_value
+        description: Gross lifetime value (total spending before adjustments)
+      - name: net_lifetime_value
+        description: Net lifetime value (after discounts and taxes)
+      - name: total_discounts_received
+        description: Total discounts received
+      - name: total_taxes_paid
+        description: Total taxes paid
+      - name: unique_products_purchased
+        description: Number of distinct products purchased
+      - name: first_purchase_date
+        description: Date of first purchase
+      - name: last_purchase_date
+        description: Date of most recent purchase
+      - name: session_count
+        description: Total number of sessions
+      - name: total_session_minutes
+        description: Total session time in minutes
+      - name: avg_session_minutes
+        description: Average session duration in minutes
+      - name: total_page_views
+        description: Total page views across sessions
+      - name: total_events
+        description: Total events triggered
+      - name: first_session_date
+        description: Date of first session
+      - name: last_session_date
+        description: Date of most recent session
+      - name: avg_order_value
+        description: Average order value (net_lifetime_value / order_count)
+      - name: user_segment
+        description: User segment classification (champion, loyal_customer, potential_loyalist, at_risk, new_customer, never_engaged, occasional)
+      - name: activity_status
+        description: Recency classification (recent, active, lapsed, inactive)

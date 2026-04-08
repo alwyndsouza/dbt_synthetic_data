@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_dim_locations
+    description: Staging model for location dimension table. Cleans and standardizes location data from the source.
+    columns:
+      - name: location_id
+        description: Primary key - unique identifier for each location
+        tests:
+          - unique
+          - not_null
+      - name: country_code
+        description: ISO country code
+      - name: country_name
+        description: Full country name
+      - name: region
+        description: Geographic region
+      - name: latitude
+        description: Latitude coordinate
+      - name: longitude
+        description: Longitude coordinate
+      - name: timezone
+        description: Timezone of the location

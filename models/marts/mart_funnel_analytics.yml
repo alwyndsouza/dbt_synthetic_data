@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: mart_funnel_analytics
+    description: |
+      Funnel Analytics Model - Semantic Layer
+      Purpose: User journey funnel analysis - signup → first_session → first_transaction.
+      One row per user with conversion metrics, time-to-conversion, and funnel status classification.
+    columns:
+      - name: user_id
+        description: Primary key - unique user identifier
+        tests:
+          - unique
+          - not_null
+      - name: signup_date
+        description: User registration date
+      - name: user_tier
+        description: User tier
+      - name: country
+        description: User's country
+      - name: is_active
+        description: Whether user is active
+      - name: has_signed_up
+        description: Flag indicating user has signed up (always 1)
+      - name: has_started_session
+        description: Flag indicating user has started at least one session
+      - name: has_converted
+        description: Flag indicating user has made at least one transaction
+      - name: first_session_timestamp
+        description: Timestamp of first session
+      - name: first_session_date
+        description: Date of first session
+      - name: first_transaction_timestamp
+        description: Timestamp of first transaction
+      - name: first_transaction_date
+        description: Date of first transaction
+      - name: first_transaction_amount
+        description: Amount of first transaction
+      - name: days_to_conversion
+        description: Days from signup to first transaction
+      - name: minutes_session_to_purchase
+        description: Minutes from first session to first purchase
+      - name: funnel_status
+        description: Current funnel status (converted, session_started_not_converted, signed_up_not_engaged, inactive)
+      - name: conversion_tier
+        description: Conversion speed classification (fast_converter, medium_converter, slow_converter, engaged_not_converted, not_engaged)
+      - name: total_sessions
+        description: Total number of sessions
+      - name: total_transactions
+        description: Total number of transactions
+      - name: total_session_time
+        description: Total session time in minutes
+      - name: lifetime_value
+        description: Total lifetime value

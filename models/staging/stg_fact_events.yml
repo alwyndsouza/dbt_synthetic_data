@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_fact_events
+    description: Staging model for event fact table. Cleans and standardizes event data from the source.
+    columns:
+      - name: event_id
+        description: Primary key - unique identifier for each event
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Foreign key to user dimension
+        tests:
+          - not_null
+      - name: device_id
+        description: Foreign key to device dimension
+      - name: location_id
+        description: Foreign key to location dimension
+      - name: event_timestamp
+        description: Timestamp when event occurred
+      - name: event_type
+        description: Type of event (button_click, form_submit, etc.)
+      - name: page_url
+        description: URL where event occurred
+      - name: session_id
+        description: Foreign key to session
+      - name: duration_seconds
+        description: Duration of the event in seconds

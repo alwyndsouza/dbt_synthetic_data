@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: mart_transaction_summary
+    description: |
+      Transaction Summary Mart - One row per transaction with full context.
+      Purpose: Revenue analytics with geography and product context.
+      Includes calculated revenue fields, discount/tax percentages, and time-based attributes.
+    columns:
+      - name: transaction_id
+        description: Primary key - unique transaction identifier
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Foreign key to user
+        tests:
+          - not_null
+      - name: product_id
+        description: Foreign key to product
+      - name: location_id
+        description: Foreign key to location
+      - name: transaction_date
+        description: Date of transaction
+      - name: transaction_timestamp
+        description: Full timestamp of transaction
+      - name: amount
+        description: Transaction amount before adjustments
+      - name: currency
+        description: Currency code
+      - name: payment_status
+        description: Payment status (success, pending, failed)
+      - name: discount_applied
+        description: Discount amount
+      - name: tax_amount
+        description: Tax amount
+      - name: email
+        description: User email
+      - name: first_name
+        description: User first name
+      - name: last_name
+        description: User last name
+      - name: user_tier
+        description: User tier
+      - name: user_country
+        description: User's country
+      - name: user_city
+        description: User's city
+      - name: product_name
+        description: Product name
+      - name: product_category
+        description: Product category
+      - name: base_price
+        description: Product base price
+      - name: country_code
+        description: Location country code
+      - name: country_name
+        description: Location country name
+      - name: region
+        description: Geographic region
+      - name: location_timezone
+        description: Location timezone
+      - name: revenue_after_discount
+        description: Amount after discount (amount - discount_applied)
+      - name: net_revenue
+        description: Net revenue after discount and tax
+      - name: discount_percentage
+        description: Discount as percentage of amount
+      - name: tax_percentage
+        description: Tax as percentage of amount
+      - name: transaction_category
+        description: Transaction category (completed, pending, failed, other)
+      - name: transaction_hour
+        description: Hour of transaction (0-23)
+      - name: day_of_week
+        description: Day of week (1-7)
+      - name: transaction_month
+        description: Month of transaction
+      - name: transaction_year
+        description: Year of transaction

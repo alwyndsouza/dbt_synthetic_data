@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_dim_products
+    description: Staging model for product dimension table. Cleans and standardizes product data from the source.
+    columns:
+      - name: product_id
+        description: Primary key - unique identifier for each product
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: Name of the product
+        tests:
+          - not_null
+      - name: product_category
+        description: Category the product belongs to
+      - name: base_price
+        description: Base price of the product
+      - name: created_at
+        description: Timestamp when product was created

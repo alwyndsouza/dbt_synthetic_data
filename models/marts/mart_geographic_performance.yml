@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: mart_geographic_performance
+    description: |
+      Geographic Performance Model - Semantic Layer
+      Purpose: Regional revenue analytics and market performance analysis.
+      One row per location with country-level aggregations, regional context, and market classification.
+    columns:
+      - name: location_id
+        description: Primary key - unique location identifier
+        tests:
+          - unique
+          - not_null
+      - name: country_code
+        description: ISO country code
+      - name: country_name
+        description: Country name
+      - name: region
+        description: Geographic region
+      - name: timezone
+        description: Location timezone
+      - name: latitude
+        description: Latitude coordinate
+      - name: longitude
+        description: Longitude coordinate
+      - name: transaction_count
+        description: Number of transactions in location
+      - name: gross_revenue
+        description: Gross revenue
+      - name: total_discounts
+        description: Total discounts given
+      - name: total_taxes
+        description: Total taxes collected
+      - name: net_revenue
+        description: Net revenue after discounts and taxes
+      - name: unique_customers
+        description: Unique customers in location
+      - name: unique_products_sold
+        description: Distinct products sold
+      - name: first_transaction_date
+        description: Date of first transaction
+      - name: last_transaction_date
+        description: Date of most recent transaction
+      - name: avg_order_value
+        description: Average order value
+      - name: revenue_per_customer
+        description: Revenue per unique customer
+      - name: region_transaction_count
+        description: Total transactions in region
+      - name: region_gross_revenue
+        description: Total gross revenue in region
+      - name: region_net_revenue
+        description: Total net revenue in region
+      - name: region_unique_customers
+        description: Unique customers in region
+      - name: locations_in_region
+        description: Number of locations in region
+      - name: countries_in_region
+        description: Number of countries in region
+      - name: share_of_region_revenue
+        description: Share of region's total revenue
+      - name: revenue_rank
+        description: Global revenue rank
+      - name: regional_rank
+        description: Revenue rank within region
+      - name: market_classification
+        description: Market classification (top_market, growth_market, established_market, developing_market)

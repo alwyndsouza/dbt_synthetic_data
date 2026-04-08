@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: mart_product_performance
+    description: |
+      Product Performance Mart - One row per product with sales and revenue metrics.
+      Purpose: Product sales, revenue, and category performance analysis.
+      Includes calculated fields for avg price sold, discount rate, and performance tier.
+    columns:
+      - name: product_id
+        description: Primary key - unique product identifier
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: Name of the product
+      - name: product_category
+        description: Product category
+      - name: base_price
+        description: Original base price
+      - name: created_at
+        description: Date product was created
+      - name: total_units_sold
+        description: Number of units sold
+      - name: total_revenue
+        description: Gross revenue from product (before discounts and taxes)
+      - name: total_discount_given
+        description: Total discounts applied to product sales
+      - name: tax_collected
+        description: Total taxes collected on product sales
+      - name: net_revenue
+        description: Net revenue after discounts and taxes
+      - name: avg_price_sold
+        description: Average price per unit sold
+      - name: discount_rate
+        description: Discount rate as percentage of gross revenue
+      - name: transaction_count
+        description: Number of transactions for this product
+      - name: unique_customers
+        description: Number of unique customers who purchased this product
+      - name: product_performance_tier
+        description: Performance classification (bestseller, regular, slow_mover, no_sales)

@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: int_enriched_sessions
+    description: Intermediate model joining sessions with user and device dimensions. Provides complete session context.
+    columns:
+      - name: session_id
+        description: Primary key - unique session identifier
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Foreign key to user
+        tests:
+          - not_null
+      - name: device_id
+        description: Foreign key to device
+      - name: start_time
+        description: Session start timestamp
+      - name: end_time
+        description: Session end timestamp
+      - name: session_duration_minutes
+        description: Session duration in minutes
+      - name: page_views
+        description: Number of page views
+      - name: events_count
+        description: Number of events
+      - name: email
+        description: User email
+      - name: first_name
+        description: User first name
+      - name: last_name
+        description: User last name
+      - name: user_country
+        description: User's country
+      - name: user_city
+        description: User's city
+      - name: user_tier
+        description: User tier
+      - name: user_is_active
+        description: Whether user is active
+      - name: signup_date
+        description: User signup date
+      - name: device_type
+        description: Device type
+      - name: os
+        description: Operating system
+      - name: browser
+        description: Browser
+      - name: session_quality_score
+        description: Derived quality score (high_quality, medium_quality, low_quality)

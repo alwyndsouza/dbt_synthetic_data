@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_fact_sessions
+    description: Staging model for session fact table. Cleans and standardizes session data from the source.
+    columns:
+      - name: session_id
+        description: Primary key - unique identifier for each session
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Foreign key to user dimension
+        tests:
+          - not_null
+      - name: device_id
+        description: Foreign key to device dimension
+        tests:
+          - not_null
+      - name: start_time
+        description: Session start timestamp
+      - name: end_time
+        description: Session end timestamp
+      - name: session_duration_minutes
+        description: Duration of session in minutes
+      - name: page_views
+        description: Number of pages viewed during session
+      - name: events_count
+        description: Number of events triggered during session

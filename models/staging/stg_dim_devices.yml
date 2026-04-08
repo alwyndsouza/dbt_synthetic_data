@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_dim_devices
+    description: Staging model for device dimension table. Cleans and standardizes device data from the source.
+    columns:
+      - name: device_id
+        description: Primary key - unique identifier for each device
+        tests:
+          - unique
+          - not_null
+      - name: device_type
+        description: Type of device (mobile, desktop, tablet)
+      - name: os
+        description: Operating system
+      - name: browser
+        description: Web browser

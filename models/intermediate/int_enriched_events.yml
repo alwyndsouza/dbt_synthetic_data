@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: int_enriched_events
+    description: Intermediate model joining events with user, device, and location dimensions.
+    columns:
+      - name: event_id
+        description: Primary key - unique event identifier
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Foreign key to user
+        tests:
+          - not_null
+      - name: device_id
+        description: Foreign key to device
+      - name: location_id
+        description: Foreign key to location
+      - name: event_timestamp
+        description: Event timestamp
+      - name: event_type
+        description: Type of event
+      - name: page_url
+        description: Page URL where event occurred
+      - name: session_id
+        description: Foreign key to session
+      - name: duration_seconds
+        description: Event duration in seconds
+      - name: email
+        description: User email
+      - name: first_name
+        description: User first name
+      - name: last_name
+        description: User last name
+      - name: user_tier
+        description: User tier
+      - name: user_is_active
+        description: Whether user is active
+      - name: device_type
+        description: Device type
+      - name: os
+        description: Operating system
+      - name: browser
+        description: Browser
+      - name: country_code
+        description: Country code
+      - name: country_name
+        description: Country name
+      - name: region
+        description: Geographic region

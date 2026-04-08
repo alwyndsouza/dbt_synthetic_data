@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: mart_enriched_sessions
+    description: |
+      Enriched Session Model - Semantic Layer
+      Purpose: Comprehensive session analysis with quality scoring and user context.
+      One row per session with composite quality scores, engagement metrics, and behavioral context.
+    columns:
+      - name: session_id
+        description: Primary key - unique session identifier
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: Foreign key to user
+        tests:
+          - not_null
+      - name: device_id
+        description: Foreign key to device
+      - name: start_time
+        description: Session start timestamp
+      - name: end_time
+        description: Session end timestamp
+      - name: session_duration_minutes
+        description: Duration in minutes
+      - name: page_views
+        description: Number of page views
+      - name: events_count
+        description: Number of events triggered
+      - name: email
+        description: User email
+      - name: first_name
+        description: User first name
+      - name: last_name
+        description: User last name
+      - name: user_tier
+        description: User tier
+      - name: user_is_active
+        description: Whether user is active
+      - name: user_country
+        description: User's country
+      - name: signup_date
+        description: User signup date
+      - name: days_since_signup_at_session
+        description: Days between signup and this session
+      - name: device_type
+        description: Device type
+      - name: os
+        description: Operating system
+      - name: browser
+        description: Browser
+      - name: device_category
+        description: Device category (mobile, desktop)
+      - name: session_event_count
+        description: Number of events in session
+      - name: avg_event_duration_seconds
+        description: Average event duration in seconds
+      - name: unique_event_types
+        description: Number of distinct event types
+      - name: unique_pages_visited
+        description: Number of distinct pages visited
+      - name: total_user_sessions
+        description: User's total session count
+      - name: user_avg_session_duration
+        description: User's average session duration
+      - name: session_quality_score
+        description: Composite quality score (0-100)
+      - name: session_quality_tier
+        description: Quality tier (high_quality, medium_quality, low_quality, minimal)
+      - name: engagement_depth
+        description: Engagement classification (deep_engagement, moderate_engagement, light_engagement, minimal)
+      - name: session_hour
+        description: Hour of session start
+      - name: time_of_day
+        description: Time period (morning, afternoon, evening, night)

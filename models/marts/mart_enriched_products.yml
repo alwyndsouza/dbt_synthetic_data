@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: mart_enriched_products
+    description: |
+      Enriched Product Model - Semantic Layer
+      Purpose: Comprehensive product performance analysis with revenue metrics and tier classification.
+      One row per product with sales statistics, revenue analysis, and performance rankings.
+    columns:
+      - name: product_id
+        description: Primary key - unique product identifier
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: Product name
+      - name: product_category
+        description: Product category
+      - name: base_price
+        description: Original base price
+      - name: created_at
+        description: Product creation date
+      - name: units_sold
+        description: Total units sold
+      - name: unique_transactions
+        description: Number of unique transactions
+      - name: unique_buyers
+        description: Number of unique customers who bought this product
+      - name: gross_revenue
+        description: Gross revenue before discounts and taxes
+      - name: net_revenue
+        description: Net revenue after discounts and taxes
+      - name: total_discounts_given
+        description: Total discounts applied
+      - name: total_taxes_collected
+        description: Total taxes collected
+      - name: avg_transaction_value
+        description: Average transaction value (gross_revenue / transactions)
+      - name: avg_net_transaction_value
+        description: Average net transaction value (net_revenue / transactions)
+      - name: discount_rate
+        description: Discount rate as percentage
+      - name: repeat_purchase_rate
+        description: Average purchases per customer
+      - name: first_sale_date
+        description: Date of first sale
+      - name: last_sale_date
+        description: Date of most recent sale
+      - name: product_age_days
+        description: Days since first sale
+      - name: product_performance_tier
+        description: Performance tier (bestseller, strong_performer, regular, slow_mover, no_sales)
+      - name: category_rank
+        description: Revenue rank within product category
